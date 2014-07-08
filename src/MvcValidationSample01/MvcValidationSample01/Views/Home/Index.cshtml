@@ -1,0 +1,37 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Validation Sample</title>
+</head>
+<body>
+    <div>
+        <fieldset>
+            <legend>Html.ValidationSummary</legend>
+            @Html.ValidationSummary()
+        </fieldset>
+
+        <fieldset>
+            <legend>Html.ValidationMessage</legend>
+            @Html.ValidationMessage("foo")<br />
+            @Html.ValidationMessage("bar")<br />
+        </fieldset>
+
+        <fieldset>
+            <legend>ViewData.ModelStateから抽出</legend>
+            @{
+                foreach (var key in ViewData.ModelState.Keys)
+                {
+                    foreach (var e in ViewData.ModelState[key].Errors)
+                    {
+                        <span>@key : @e.ErrorMessage</span><br />
+                    }
+                }
+            }
+        </fieldset>
+    </div>
+</body>
+</html>
